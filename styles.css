@@ -207,6 +207,7 @@ p {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+  align-items: start;
 }
 
 .event {
@@ -216,12 +217,16 @@ p {
   background: linear-gradient(180deg, #ffffff, #f8faf8);
   display: grid;
   gap: 6px;
+  align-content: start;
 }
 
 .event-image {
+  display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: clamp(190px, 22vw, 260px);
+  aspect-ratio: auto;
   object-fit: cover;
+  object-position: center;
   border-radius: 10px;
   border: 1px solid #d4dbd7;
   margin-bottom: 2px;
@@ -426,6 +431,10 @@ button:hover {
 
   .timeline {
     grid-template-columns: 1fr;
+  }
+
+  .event-image {
+    height: clamp(200px, 42vw, 300px);
   }
 
   .assistant-content {
