@@ -115,24 +115,28 @@ p {
   border: 1px solid var(--line);
   border-radius: 14px;
   overflow: hidden;
+  min-height: 320px;
   background: #f6f8f7;
 }
 
 .hero-main-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
 .hero-accent-image {
   position: absolute;
   width: min(36%, 200px);
+  aspect-ratio: 1 / 1;
   right: 12px;
   bottom: 12px;
   border-radius: 12px;
   border: 1px solid #d0d7d3;
   box-shadow: 0 10px 24px rgba(28, 35, 42, 0.22);
   background: #fff;
+  object-fit: cover;
 }
 
 .btn {
@@ -216,7 +220,8 @@ p {
 
 .event-image {
   width: 100%;
-  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   border-radius: 10px;
   border: 1px solid #d4dbd7;
   margin-bottom: 2px;
