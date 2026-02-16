@@ -138,13 +138,12 @@
       <form
         id="interviewForm"
         class="interview-form"
-        action="https://formsubmit.co/nexusaicoreteam@gmail.com"
+        action="https://formsubmit.co/ajax/nexusaicoreteam@gmail.com"
         method="POST"
       >
         <input type="hidden" name="_subject" value="Nexus Factory Interview Request" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_next" value="https://kishorepagidi.com/nexus-factory-site/thank-you.html" />
         <label>
           Name
           <input id="name" name="name" type="text" required />
@@ -167,6 +166,7 @@
         </label>
         <button type="submit">Send Interview Request</button>
       </form>
+      <p class="note" id="formStatus" role="status" aria-live="polite"></p>
       <p class="note">No software install needed. 20-minute conversation only.</p>
     </section>
 
@@ -209,6 +209,34 @@
     </section>
   </main>
 
+  <script>
+    const form = document.getElementById("interviewForm");
+    const formStatus = document.getElementById("formStatus");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      formStatus.textContent = "Sending request...";
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("submit failed");
+        }
+
+        window.location.href = "./thank-you.html";
+      } catch (_error) {
+        formStatus.textContent =
+          "Unable to send right now. Please retry in a minute.";
+      }
+    });
+  </script>
 </body>
 </html>
 
